@@ -93,18 +93,33 @@ keys = [
     #([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl set 10%-")),
 ]
 
-groups = [Group(i) for i in "asdfuiop"]
 
-for i, group in enumerate(groups, 1):
+# Change name of workspaces:
+def init_group_names():
+    return [
+        ('DEV', {'layout': 'MonadTall'}),
+        ('NET', {'layout': 'Stack'}),
+        ('DOCS', {'layout': 'Max'}),
+        ('VID', {'layout': 'Max'}),
+    ]
+
+def init_groups():
+    return [Group(name, **kwargs) for name, kwargs in group_names]
+
+if __name__ in ['config', '__main__']:
+    group_names = init_group_names()
+    groups = init_groups()
+
+for i, (group_name, kwargs) in enumerate(group_names, 1):
     group_key = str(i)
     keys.extend([
         # mod1 + letter of group = switch to group
-        Key([mod], group_key, lazy.group[group.name].toscreen(),
-            desc="Switch to group {}".format(group.name)),
+        Key([mod], group_key, lazy.group[group_name].toscreen(),
+            desc="Switch to group {}".format(group_name)),
 
         # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], group.name, lazy.window.togroup(group.name, switch_group=True),
-            desc="Switch to & move focused window to group {}".format(group.name)),
+        Key([mod, "shift"], group_key, lazy.window.togroup(group_name, switch_group=True),
+            desc="Switch to & move focused window to group {}".format(group_name)),
         # Or, use below if you prefer not to switch to that group.
         # # mod1 + shift + letter of group = move focused window to group
         # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
