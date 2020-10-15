@@ -97,10 +97,10 @@ keys = [
 # Change name of workspaces:
 def init_group_names():
     return [
-        ('DEV', {'layout': 'MonadTall'}),
-        ('NET', {'layout': 'Stack'}),
-        ('DOCS', {'layout': 'Max'}),
-        ('VID', {'layout': 'Max'}),
+        ('   ', {'layout': 'monadtall'}),
+        ('   ', {'layout': 'stack'}),
+        ('   ', {'layout': 'max'}),
+        ('   ', {'layout': 'max'}),
     ]
 
 def init_groups():
