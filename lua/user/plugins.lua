@@ -33,7 +33,7 @@ end
 packer.init {
 	display = {
 		open_fn = function()
-			return require("packer.utill").float { border = "rounded" }
+			return require("packer.util").float { border = "rounded" }
 		end,
 	},
 }
@@ -47,11 +47,10 @@ return packer.startup(function(use)
 
 	-- colorschemes
 	use "lunarvim/colorschemes"
-	use "lunarvim/darkplus.nvim"
 	use 'lunarvim/onedarker.nvim' -- Onehalfdark theme
+	use 'navarasu/onedark.nvim' -- extensive onedark theme
   use 'rakr/vim-one' -- Atom one like color scheme (limited support for languages)
   use 'joshdick/onedark.vim' -- Onedark theme
-  use 'chriskempson/base16-vim' -- bunch of base16 themes
 
 	-- cmp plugins
 	use "hrsh7th/nvim-cmp" -- Completion plugin
@@ -62,10 +61,10 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-cmdline" -- cmdline opts
   use "hrsh7th/cmp-nvim-lsp-signature-help" -- cmdline opts
 
-	use "saadparwaliz1/cmp_luasnip" -- snippet completions
+	use "saadparwaiz1/cmp_luasnip" -- snippet completions
 
 	-- snippets
-	use "L3M0N4D3/Lua/Snip" -- snippet engine
+	use "L3M0N4D3/LuaSnip" -- snippet engine
 	use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
 	-- automatically set up you configuration after cloning packer.nvim
