@@ -1,9 +1,10 @@
 local options = {
+   
   encoding = 'utf-8',
-	expandtab = true,
+  expandtab = true,
 	showtabline = 1,
 	tabstop = 2,
-	shiftwidth = 2,
+  shiftwidth = 2,
   smartindent = true,
   smartcase = true,
 
