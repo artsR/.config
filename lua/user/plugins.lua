@@ -66,6 +66,28 @@ return packer.startup(function(use)
 	-- snippets
 	use "L3MON4D3/LuaSnip" -- snippet engine
 	use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  -- telescope
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = {"nvim-lua/plenary.nvim"}
+  }
+  -- Telescope Extensions
+  use "cljoly/telescope-repo.nvim"
+  use { "nvim-telescope/telescope-file-browser.nvim" }
+  use { "nvim-telescope/telescope-ui-select.nvim" }
+  use "dhruvmanila/telescope-bookmarks.nvim"
+  use "nvim-telescope/telescope-github.nvim"
+  -- Trying command palette
+  use { "LinArcX/telescope-command-palette.nvim" }
+  use {
+    "AckslD/nvim-neoclip.lua",
+    config = function()
+      require("neoclip").setup()
+    end,
+  }
+  use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+  use "jvgrootveld/telescope-zoxide"
+
 
 	-- automatically set up you configuration after cloning packer.nvim
 	-- put this at the end after all plugins
