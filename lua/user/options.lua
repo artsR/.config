@@ -1,12 +1,12 @@
 local options = {
    
-  encoding = 'utf-8',
   expandtab = true,
+  fileencoding = 'utf-8',
 	showtabline = 1,
-	tabstop = 2,
   shiftwidth = 2,
   smartindent = true,
   smartcase = true,
+	tabstop = 2,
 
   number = true,
   relativenumber  = true,
@@ -14,15 +14,16 @@ local options = {
   wrap = true,
 
   hlsearch = true,
-  incsearch = true,
   ignorecase = true,
+  incsearch = true,
 
-  conceallevel = 0,
   completeopt = { 'menuone', 'preview' },  
+  conceallevel = 0,
 
+  termguicolors = true,
   scrolloff = 8,
   mouse = 'a',
-  guifont = 'Fira/ Code:h20',
+  guifont = 'Fira Code:h12',
 }
 
 for key, value in pairs(options) do
