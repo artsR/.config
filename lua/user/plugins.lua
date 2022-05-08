@@ -88,6 +88,13 @@ return packer.startup(function(use)
   use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
   use "jvgrootveld/telescope-zoxide"
 
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+  }
+  use 'nvim-treesitter/playground'
+  use 'p00f/nvim-ts-rainbow'
 
 	-- automatically set up you configuration after cloning packer.nvim
 	-- put this at the end after all plugins
