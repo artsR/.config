@@ -26,6 +26,7 @@ vim.cmd [[
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
+  vim.notify("packer has not been loaded properly!")
 	return
 end
 
@@ -101,12 +102,12 @@ return packer.startup(function(use)
   -- use "kyazdani142/nvim-web-devicons" -- tree webicons
 
   -- Treesitter
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-  }
-  use 'nvim-treesitter/playground'
-  use 'p00f/nvim-ts-rainbow'
+  -- use {
+  --   'nvim-treesitter/nvim-treesitter',
+  --   run = ':TSUpdate',
+  -- }
+  -- use 'nvim-treesitter/playground'
+  -- use 'p00f/nvim-ts-rainbow'
   -- git
 
   -- Facilities",
