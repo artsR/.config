@@ -1,5 +1,6 @@
 local options = {
-   
+
+  clipboard = 'unnamedplus',
   expandtab = true,
   fileencoding = 'utf-8',
 	showtabline = 1,
@@ -13,11 +14,11 @@ local options = {
 
   wrap = true,
 
-  hlsearch = true,
+  hlsearch = false,
   ignorecase = true,
   incsearch = true,
 
-  completeopt = { 'menuone', 'preview' },  
+  completeopt = { 'menuone', 'preview' },
   conceallevel = 0,
 
   termguicolors = true,
@@ -29,3 +30,4 @@ local options = {
 for key, value in pairs(options) do
 	vim.opt[key] = value
 end
+
