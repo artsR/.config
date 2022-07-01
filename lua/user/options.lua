@@ -1,5 +1,6 @@
 local options = {
 
+  swapfile = false,
   clipboard = 'unnamedplus',
   expandtab = true,
   fileencoding = 'utf-8',
