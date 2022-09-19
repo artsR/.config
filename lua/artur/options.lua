@@ -31,7 +31,6 @@ local options={
   -- treesitter settings for folding
   foldmethod="expr",
   foldexpr="nvim_treesitter#foldexpr()",
-  foldlevel=1,
 }
 
 for key, value in pairs(options) do

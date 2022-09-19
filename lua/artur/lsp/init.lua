@@ -8,7 +8,7 @@ M.load = function()
 
     require('artur.lsp.lsp-installer')
     require('artur.lsp.handlers').setup()
-    require('artur.lsp.null-ls').setup()
+    -- require('artur.lsp.null-ls').setup()
 end
 
 return M

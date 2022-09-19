@@ -106,11 +106,12 @@ return packer.startup(function(use)
     -- use "onsails/lspkind-nvim" -- prettify completion popup
 
 
-    -- -- snippets
+    -- snippets
+    -- use "neoclide/coc.nvim"
     -- use "saadparwaiz1/cmp_luasnip" -- snippet completions
     -- use "L3MON4D3/LuaSnip" -- snippet engine
     -- use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-    --use "ray-x/cmp-treesitter" -- treesitter highlight nodes as completion candicates
+    -- use "ray-x/cmp-treesitter" -- treesitter highlight nodes as completion candicates
 
     -- Treesitter
     use {

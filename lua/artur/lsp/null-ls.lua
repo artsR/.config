@@ -28,7 +28,7 @@ M.setup = function()
       -- Set a linter
       --d.flake8,
       --d.pylint,
-      d.zsh,
+      -- d.zsh,
     },
     -- NOTE: You can remove this on attach function to disable format on save
     on_attach = function(client)
