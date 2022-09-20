@@ -58,7 +58,7 @@ return packer.startup(function(use)
     use {
         'catppuccin/nvim',
         as = 'catppuccin',
-        config =  function() require('catppuccin').setup {} end 
+        config =  function() require('catppuccin').setup {} end
     }
     -- use 'sonph/onehalf'
 
@@ -75,7 +75,7 @@ return packer.startup(function(use)
     use {
         'akinsho/toggleterm.nvim',
         tag = '*',
-        config =  function() require("toggleterm").setup {} end 
+        config =  function() require("toggleterm").setup {} end
     }
 
     -- file tree
@@ -86,6 +86,19 @@ return packer.startup(function(use)
         },
     }
 
+    -- Treesitter
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate',
+    }
+    use 'nvim-treesitter/playground'
+    use 'p00f/nvim-ts-rainbow'
+    -- use {
+    --  'theHamsta/nvim-dap-virtual-text,
+    --   config = function() require('nvim-dap-virtual-text').setup {}
+    -- }
+    -- use 'folke/twilight.nvim'  -- dim inactive portions of the code
+
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
     use {  -- simple to use language server installer (provide menu to choose server)
@@ -95,7 +108,7 @@ return packer.startup(function(use)
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
 
-    -- cmp plugins
+    -- cmp plugins --
     use "hrsh7th/nvim-cmp" -- Completion plugin
     use "hrsh7th/cmp-nvim-lsp" -- add LSP completion
     -- use "hrsh7th/cmp-buffer" -- buffer completions
@@ -112,14 +125,6 @@ return packer.startup(function(use)
     -- use "L3MON4D3/LuaSnip" -- snippet engine
     -- use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
     -- use "ray-x/cmp-treesitter" -- treesitter highlight nodes as completion candicates
-
-    -- Treesitter
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-    }
-    use 'nvim-treesitter/playground'
-    use 'p00f/nvim-ts-rainbow'
 
     -- telescope
     use {

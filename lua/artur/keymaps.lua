@@ -18,7 +18,10 @@ vim.g.maploclleader = ' '
 --   command_mode = 'c',
 
 -- Normal --
--- Better window navigation
+-- ## Search
+keymap('n', '<leader>ss', '/', opts)
+
+-- ## Better window navigation
 keymap('n', '<A-h>', '<C-w>h', opts)
 keymap('n', '<A-j>', '<C-w>j', opts)
 keymap('n', '<A-k>', '<C-w>k', opts)
@@ -94,4 +97,8 @@ keymap('n', '<leader>fg', '<CMD>Telescope live_grep<CR>', opts)
 keymap('n', '<leader>fb', '<CMD>Telescope buffers<CR>', opts)
 keymap('n', '<leader>fh', '<CMD>Telescope help_tags<CR>', opts)
 keymap('n', '<leader>fb', '<CMD>Telescope file_browser<CR>', opts)
+keymap('n', '<leader>fd', '<CMD>Telescope fd<CR>', opts)
+
+-- Treesitter --
+keymap('n', '<leader>tr', '<CMD>TSHighlightCapturesUnderCursor<CR>', opts)
 

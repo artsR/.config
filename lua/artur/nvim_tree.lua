@@ -1,4 +1,5 @@
 require('nvim-tree').setup({
+    open_on_tab=true,
     actions = {
         use_system_clipboard = true,
         change_dir = {
@@ -8,7 +9,7 @@ require('nvim-tree').setup({
         },
     },
     view = {
-        adaptive_size=false,
+        adaptive_size=true,
         mappings={
             list={
                 {key='u', action='dir_up'},
@@ -17,6 +18,9 @@ require('nvim-tree').setup({
         float={
             enable=true,
         },
+    },
+    filters={
+        custom={ 'node_modules', '.cache', '__pycache__' },
     },
     renderer = {
         indent_markers = {
