@@ -1,7 +1,7 @@
 require 'artur.options'
 require 'artur.keymaps'
 require 'artur.plugins'
-require 'artur.terminal'
+require 'artur.toggleterm'
 require 'artur.hop'
 require 'artur.colorscheme'
 -- require 'artur.cmp'

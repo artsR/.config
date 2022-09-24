@@ -70,6 +70,7 @@ keymap('x', '<A-k>', ":move '<-2<CR>gv-gv", opts)
 
 -- Nvim-Tree --
 keymap('n', '<leader>nt', '<CMD>NvimTreeToggle<CR>', opts)
+keymap('n', '<leader>ntt', '<CMD>NvimTreeFindFileToggle<CR>', opts)
 keymap('n', '<leader>nf', '<CMD>NvimTreeFocus<CR>', opts)
 
 -- Startify
@@ -77,7 +78,7 @@ keymap('n', '<leader>S', '<CMD>Startify<CR>', opts)
 
 -- Hop -- easier navigation with hop
 -- place this in one of your configuration file(s)
--- keymap('n', '<leader>f', '<CMD>HopWord<CR>', opts) interferes with Telescope
+keymap('n', 'f', '<CMD>HopChar2CurrentLine<CR>', opts)
 keymap('n', '<leader>hw', '<CMD>HopWord<CR>', opts)
 keymap('n', '<leader>hl', '<CMD>HopLineStart<CR>', opts)
 keymap('n', '<leader>hc', '<CMD>HopWordCurrentLine<CR>', opts)
@@ -85,11 +86,12 @@ keymap('n', '<leader>hmw', '<CMD>HopWordMW<CR>', opts)
 keymap('n', '<leader>hh', '<CMD>HopPatternMW<CR>', opts)
 
 -- Terminal --
--- Better terminal navigation
+-- ## Better terminal navigation
 -- keymap('t', '<C-h>', '<C-\\><C-N><C-w>h', term_opts)
 -- keymap('t', '<C-j>', '<C-\\><C-N><C-w>j', term_opts)
 -- keymap('t', '<C-k>', '<C-\\><C-N><C-w>k', term_opts)
 -- keymap('t', '<C-l>', '<C-\\><C-N><C-w>l', term_opts)
+-- ## ToggleTerm
 
 -- Telescope --
 keymap('n', '<leader>ff', '<CMD>Telescope find_files<CR>', opts)

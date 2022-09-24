@@ -107,6 +107,8 @@ return packer.startup(function(use)
 	}
     use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
     use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+    -- use 'glepnir/lspsaga.nvim'
+    -- use 'MunifTanjim/prettier.nvim'
 
     -- cmp plugins --
     use "hrsh7th/nvim-cmp" -- Completion plugin
@@ -163,6 +165,19 @@ return packer.startup(function(use)
     use {
         'norcalli/nvim-colorizer.lua',
         config = function() require('colorizer').setup {} end
+    }
+    use {
+        'anuvyklack/windows.nvim',
+        requires = {
+            "anuvyklack/middleclass",
+            "anuvyklack/animation.nvim"
+        },
+        config = function()
+            vim.o.winwidth = 10
+            vim.o.winminwidth = 10
+            vim.o.equalalways = false
+            require('windows').setup()
+        end
     }
 
     -- Easier navigation

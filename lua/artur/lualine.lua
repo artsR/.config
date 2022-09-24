@@ -219,7 +219,11 @@ ins_right {
 }
 
 -- Now don't forget to initialize lualine
-lualine.setup(config)
+-- lualine.setup(config)
 lualine.setup({
-    theme='catppucin'
+    options = {
+        theme='catppuccin',
+        globalstatus=true,
+    }
 })
+
