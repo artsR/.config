@@ -34,6 +34,7 @@ require("telescope").setup {
       case_mode = "smart_case", -- this is default
     },
     file_browser = {
+      hijact_netrw = true,
       hidden = true,
     },
     ["ui-select"] = {
@@ -153,17 +154,25 @@ require("telescope").setup {
 }
 
 -- 🔭 Extensions --
+
 -- https://github.com/nvim-telescope/telescope-file-browser.nvim
-require("telescope").load_extension "file_browser"
+require('telescope').load_extension('file_browser')
+
+-- https://github.com/rcarriga/nvim-notify#viewing-history
+require('telescope').load_extension('notify')
+
 -- https://github.com/nvim-telescope/telescope-ui-select.nvim
 -- require("telescope").load_extension "ui-select"
+
 -- https://github.com/nvim-telescope/telescope-fzf-native.nvim#telescope-fzf-nativenvim
--- require("telescope").load_extension "fzf"
+-- require('telescope').load_extension('fzf')
+
 -- https://github.com/LinArcX/telescope-command-palette.nvim
 -- require("telescope").load_extension "command_palette"
+
 -- https://github.com/dhruvmanila/telescope-bookmarks.nvim
 -- <space>b
--- require("telescope").load_extension "bookmarks"
+-- require('telescope').load_extension('bookmarks')
 
 -- https://github.com/jvgrootveld/telescope-zoxide
 -- <leader>z
@@ -205,13 +214,13 @@ end
 -- end github functions
 
 -- grep_string pre-filtered from grep_prompt
-local function grep_filtered(opts)
-  opts = opts or {}
-  require("telescope.builtin").grep_string {
-    path_display = { "smart" },
-    search = opts.filter_word or "",
-  }
-end
+--local function grep_filtered(opts)
+--  opts = opts or {}
+--  require("telescope.builtin").grep_string {
+--    path_display = { "smart" },
+--    search = opts.filter_word or "",
+--  }
+--end
 
 -- open vim.ui.input dressing prompt for initial filter
 function M.grep_prompt()
@@ -269,6 +278,7 @@ M.project_files = function()
     ".rustup/.*",
     "Movies/",
     ".cargo/registry/",
+    "__pycache__/*",
   }
 
   if ret == 0 then
@@ -280,17 +290,17 @@ M.project_files = function()
 end
 
 -- @TODOUA: break up notes and configs
-function M.grep_notes()
-  local opts = {}
-  opts.hidden = true
-  opts.search_dirs = {
-    "~/notes/",
-  }
-  opts.prompt_prefix = "   "
-  opts.prompt_title = " Grep Notes"
-  opts.path_display = { "smart" }
-  require("telescope.builtin").live_grep(opts)
-end
+--function M.grep_notes()
+--  local opts = {}
+--  opts.hidden = true
+--  opts.search_dirs = {
+--    "~/notes/",
+--  }
+--  opts.prompt_prefix = "   "
+--  opts.prompt_title = " Grep Notes"
+--  opts.path_display = { "smart" }
+--  require("telescope.builtin").live_grep(opts)
+--end
 
 function M.find_notes()
   require("telescope.builtin").find_files {

@@ -50,8 +50,7 @@ vim.g.indent_blankline_filetype_exclude = {  -- exclude indent color column
     'neogitstatus',
     'neo-tree',
     'Trouble',
-}
-vim.g.indent_blankline_context_patterns = {
+} vim.g.indent_blankline_context_patterns = {
     "class",
     "return",
     "function",
@@ -70,9 +69,7 @@ vim.g.indent_blankline_context_patterns = {
     "jsx_self_closing_element",
     "try_statement",
     "catch_clause",
-    "import_statement",
-    "operation_type",
-}
+    "import_statement", "operation_type", }
 
 -- Neovide options
 if vim.g.neovide then
@@ -81,7 +78,10 @@ if vim.g.neovide then
     vim.g.neovide_remember_window_size=true
     vim.g.neovide_input_use_logo=true
     vim.g.neovide_scroll_animation_length=0.5
+    vim.g.neovide_no_idle=true
     vim.g.neovide_scale=1
     vim.g.neovide_fullscreen=false
+    vim.g.neovide_cursor_vfx_mode='railgun'
+    vim.g.neovide_cursor_vfx_particle_density=12.0
 end
 
