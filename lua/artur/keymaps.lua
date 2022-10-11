@@ -78,7 +78,8 @@ keymap('n', '<leader>S', '<CMD>Startify<CR>', opts)
 
 -- Hop -- easier navigation with hop
 -- place this in one of your configuration file(s)
-keymap('n', 'f', '<CMD>HopChar2CurrentLine<CR>', opts)
+keymap('n', 'f', '<CMD>HopChar1CurrentLine<CR>', opts)
+keymap('n', '<leader>f', '<CMD>HopChar2CurrentLine<CR>', opts)
 keymap('n', '<leader>hw', '<CMD>HopWord<CR>', opts)
 keymap('n', '<leader>hl', '<CMD>HopLineStart<CR>', opts)
 keymap('n', '<leader>hc', '<CMD>HopWordCurrentLine<CR>', opts)
@@ -100,6 +101,7 @@ keymap('n', '<leader>fb', '<CMD>Telescope buffers<CR>', opts)
 keymap('n', '<leader>fh', '<CMD>Telescope help_tags<CR>', opts)
 keymap('n', '<leader>fb', '<CMD>Telescope file_browser<CR>', opts)
 keymap('n', '<leader>fd', '<CMD>Telescope fd<CR>', opts)
+keymap('n', '<leader>fn', '<CMD>Telescope notify<CR>', opts)
 
 -- Treesitter --
 keymap('n', '<leader>tr', '<CMD>TSHighlightCapturesUnderCursor<CR>', opts)
