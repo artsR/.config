@@ -14,11 +14,11 @@ vim.g.maplocalleader = ' '
 --   command_mode = 'c',
 
 keymap('n', '<C-s>', ':w<CR>', opts)
-keymap('n', '<leader>nh', ':nohl<CR>', opts)
-
 keymap('i', '<C-s>', '<ESC>:w<CR>', opts)
 keymap('i', 'jk', '<ESC>', opts)
-keymap('i', '<C-s>', '<ESC>:w<CR>', opts)
+keymap('t', 'jk', '<C-\\><C-n>', opts)
+
+keymap('n', '<leader>nh', ':nohl<CR>', opts)
 
 -- Normal --
 -- Better window navigation
@@ -33,7 +33,7 @@ keymap('n', '<leader>bp', ':bp<CR>', opts)
 keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
 -- hop motion configuration
-keymap('n', '<leader>s', '<CMD>HopPatternMW<CR>', opts)
+keymap('n', '<leader>hs', '<CMD>HopPatternMW<CR>', opts)
 keymap('n', '<leader>hf', '<CMD>HopChar1CurrentLine<CR>', opts)
 keymap('n', '<leader>hc', '<CMD>HopWordCurrentLine<CR>', opts)
 keymap('n', '<leader>hw', '<CMD>HopWord<CR>', opts)

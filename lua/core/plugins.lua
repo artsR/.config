@@ -45,7 +45,13 @@ return packer.startup(function(use)
 	use 'nvim-lua/plenary.nvim'
 	use 'nvim-lua/popup.nvim'
 
-	use 'rcarriga/nvim-notify'
+	use {
+		'rcarriga/nvim-notify',
+		config = function ()
+			require('notify').setup()
+			vim.notify = require('notify')
+		end
+	}
 	use 'folke/which-key.nvim'
 	-- use 'LinArcX/telescope-command-palette.nvim'
 
@@ -62,7 +68,15 @@ return packer.startup(function(use)
 	-- 		vim.api.nvim_command "colorscheme catppuccin"
 	-- 	end
 	-- }
+  -- use 'dracula/vim.git dracula'
+  -- use 'fugalh/desert.vim'
+  -- use 'RRethy/nvim-base16'
 	use 'kyazdani42/nvim-web-devicons'
+	use {
+		'akinsho/bufferline.nvim',
+		tag = 'v3.*',
+		requires = 'kyazdani42/nvim-web-devicons'
+	}
 	use {
 		'nvim-lualine/lualine.nvim',  -- status line
 		requires = { 'kyazdani42/nvim-web-devicons', opt = true }
@@ -86,7 +100,7 @@ return packer.startup(function(use)
 	-- use 'anuvyklack/pretty-fold.nvim'  -- foldtext customization
 	-- use 'anuvyklack/windows.nvim'  -- automatically expand width of the current window
 	-- use 'preservim/tagbar'
-	-- use 'simrat39/symbols-outline.nvim'
+	use 'simrat39/symbols-outline.nvim'
 
 	-- Telescope
 	use {
@@ -95,8 +109,9 @@ return packer.startup(function(use)
 	}
 	use {
 		'nvim-telescope/telescope-fzf-native.nvim',
-		run = 'make'
+		run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
 	}
+	use 'nvim-telescope/telescope-file-browser.nvim'
 
 	-- Completion
 	use 'hrsh7th/nvim-cmp'  -- completion engine
@@ -129,15 +144,20 @@ return packer.startup(function(use)
 
 	-- -- formatting & linting
 	use 'jose-elias-alvarez/null-ls.nvim'
+  -- use {
+  --   'MunifTanjim/prettier',
+  --   requires = 'jose-elias-alvarez/null-ls.nvim'
+  -- }
 	use 'jayp0521/mason-null-ls.nvim'
 
 	-- Utils
 	use 'tpope/vim-surround'
 	use 'windwp/nvim-autopairs'
 	use 'numToStr/Comment.nvim'
-	-- use 'NvChad/nvim-colorizer.lua'  -- color highlighter
+	use 'norcalli/nvim-colorizer.lua'  -- color highlighter
 
 	-- Git
+	-- use '/git.nvim'  -- git-fugitive substitution
 	-- use 'lewis6991/gitsigns.nvim'
 
 	-- Web Dev

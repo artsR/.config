@@ -11,8 +11,15 @@ telescope.setup({
 				['<C-h>'] = 'which_key',
 			}
 		}
-	}
+	},
+	-- extensions = {
+	-- 	file_browser = {
+	-- 		hijack_netrw = true,  -- disables netrw; use telescope-file-browser in its place
+	-- 	},
+	-- }
 })
 
--- telescope.load_extension('fzf')
+telescope.load_extension('notify')
+telescope.load_extension('fzf')
+-- telescope.load_extension('file_browser')
 
