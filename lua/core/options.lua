@@ -16,6 +16,7 @@ local options = {
   tabstop=4,
   shiftwidth=4,
 	autoindent=true,
+  smartindent=true,
 
 	-- pseudo-transparency appearance
 	winblend=0,
@@ -31,6 +32,7 @@ local options = {
 	foldexpr='nvim_treesitter#foldexpr()',
 
 	termguicolors=true,
+  guifont='mononoki_NF:h13',
 }
 
 for key, value in pairs(options) do

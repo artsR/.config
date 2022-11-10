@@ -7,7 +7,7 @@ lualine.setup({
 		globalstatus = false,
 		theme = 'onedark',
 		disabled_filetypes = {
-			statusline = {'packer', 'NvimTree'},
+			statusline = {'packer'},
 		},
     		section_separators = { left = '', right = '' },
 	}

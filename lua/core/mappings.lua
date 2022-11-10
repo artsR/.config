@@ -30,7 +30,7 @@ keymap('n', '<leader>bn', ':bn<CR>', opts)
 keymap('n', '<leader>bp', ':bp<CR>', opts)
 
 -- nvim-tree keymaps
-keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
+-- keymap('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
 -- hop motion configuration
 keymap('n', '<leader>hs', '<CMD>HopPatternMW<CR>', opts)

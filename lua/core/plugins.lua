@@ -92,10 +92,10 @@ return packer.startup(function(use)
 	-- use 'nvim-treesitter/nvim-treesitter-context'
 
 	-- Navigation
-	use 'nvim-tree/nvim-tree.lua'
+	-- use 'nvim-tree/nvim-tree.lua'
 	use 'phaazon/hop.nvim'
-	-- use 'p00f/nvim-ts-rainbow'  -- rainbow parentheses using TreeSitter
-	-- use 'folke/twilight.nvim'  -- dim inactive portions of the code using TreeSitter
+	use 'p00f/nvim-ts-rainbow'  -- rainbow parentheses using TreeSitter
+	use 'folke/twilight.nvim'  -- dim inactive portions of the code using TreeSitter
 	-- use 'lukas-reineke/indent-blankline.nvim'
 	-- use 'anuvyklack/pretty-fold.nvim'  -- foldtext customization
 	-- use 'anuvyklack/windows.nvim'  -- automatically expand width of the current window
@@ -117,7 +117,9 @@ return packer.startup(function(use)
 	use 'hrsh7th/nvim-cmp'  -- completion engine
 	use 'hrsh7th/cmp-buffer'  -- buffer completion engine
 	use 'hrsh7th/cmp-path'  -- system path completion engine
+	use 'hrsh7th/cmp-nvim-lua'  -- 
 	use 'hrsh7th/cmp-nvim-lsp'  -- lsp completion engine
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
 	-- use {
 	-- 	'tzachar/cmp-tabnine',
 	-- 	run = './install.sh',
@@ -155,6 +157,7 @@ return packer.startup(function(use)
 	use 'windwp/nvim-autopairs'
 	use 'numToStr/Comment.nvim'
 	use 'norcalli/nvim-colorizer.lua'  -- color highlighter
+  -- use 'xeluxee/competitest.nvim'  -- testcase manager and checker
 
 	-- Git
 	-- use '/git.nvim'  -- git-fugitive substitution
