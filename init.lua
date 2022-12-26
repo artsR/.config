@@ -179,6 +179,8 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- General keymaps:
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { silent = true })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { silent = true })
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
 
 vim.keymap.set('n', '<C-s>', ':w<CR>', { silent = true })
 vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>', { silent = true })
