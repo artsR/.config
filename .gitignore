@@ -1,0 +1,10 @@
+.netrwhist
+.init.vim-rplugin~
+.*.swp
+.swp
+doc/tags
+view/*
+plugin/packer_compiled.lua
+shada/*
+spell/*
+
