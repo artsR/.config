@@ -28,7 +28,13 @@ require('packer').startup(function(use)
 
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
-    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+    requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip', 'hrsh7th/cmp-buffer' },
+    -- TODO: add rafamadriz/friendly-snippets
+    -- require('luasnip.loaders.from_vscode').lazy_load()
+    -- TODO: setup framework for React:
+    -- `require('luasnip').filetype_extend('javascript', { 'javascriptreact' })`
+    -- extending snippets, in particular making JavaScript React available for JavaScript files.
+    -- TODO: add github/copilot.vim
   }
 
   use { -- Highlight, edit, and navigate code
@@ -51,8 +57,22 @@ require('packer').startup(function(use)
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use { "catppuccin/nvim", as = "catppuccin" }
   use 'folke/tokyonight.nvim'
+	use({ "EdenEast/nightfox.nvim", tag = "v1.0.0" })
   use { 'dracula/vim', as = 'dracula' }
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
+  use {
+    'akinsho/bufferline.nvim',
+    requires = 'nvim-tree/nvim-web-devicons',
+    config = function()
+      require('bufferline').setup {
+        options = {
+          numbers = function(opts)
+            return string.format('%s·%s', opts.raise(opts.id), opts.lower(opts.ordinal))
+          end,
+        }
+      }
+    end
+  }
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
   use 'tpope/vim-sleuth' -- Detect tabstop and shiftwidth automatically
@@ -85,12 +105,52 @@ require('packer').startup(function(use)
         })
     end
   }
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup {}
+    end
+  }
+  use {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup {}
+    end
+  }
   use { -- easier jumping to the given place in the file
     'phaazon/hop.nvim',
     branch = 'v2', -- optional but strongly recommended
     config = function()
       -- you can configure Hop the way you like here; see :h hop-config
       require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  }
+  use {
+    'folke/twilight.nvim',
+    config = function()
+      require('twilight').setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+        dimming = {
+          alpha = 0.25, -- amount of dimming
+          -- we try to get the foreground from the highlight groups or fallback color
+          color = { "Normal", "#ffffff" },
+          term_bg = "#000000", -- if guibg=NONE, this will be used to calculate text color
+          inactive = false, -- when true, other windows will be fully dimmed (unless they contain the same buffer)
+        },
+        context = 10, -- amount of lines we will try to show around the current line
+        treesitter = true, -- use treesitter when available for the filetype
+        -- treesitter is used to automatically expand the visible text,
+        -- but you can further control the types of nodes that should always be fully expanded
+        expand = { -- for treesitter, we we always try to expand to the top-most ancestor with these types
+          "function",
+          "method",
+          "table",
+          "if_statement",
+        },
+        exclude = {}, -- exclude these filetypes
+      }
     end
   }
 
@@ -163,6 +223,7 @@ vim.o.termguicolors = true
 vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
+vim.o.clipboard='unnamedplus'
 vim.o.completeopt = 'menuone,noselect'
 
 -- [[ Basic Keymaps ]]
@@ -398,7 +459,8 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
+  -- eslint = {},
 
   sumneko_lua = {
     Lua = {
@@ -452,11 +514,11 @@ cmp.setup {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>'] = cmp.mapping.confirm {
+    ['<Tab>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<Tab>'] = cmp.mapping(function(fallback)
+    ['<CR>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
