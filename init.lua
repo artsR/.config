@@ -265,6 +265,8 @@ vim.o.termguicolors = true
 vim.o.clipboard='unnamedplus'
 vim.o.completeopt = 'menuone,noselect'
 
+vim.o.swapfile=false
+
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
 -- See `:help mapleader`
