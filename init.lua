@@ -54,11 +54,14 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
+  -- Themes
   use 'navarasu/onedark.nvim' -- Theme inspired by Atom
   use { "catppuccin/nvim", as = "catppuccin" }
   use 'folke/tokyonight.nvim'
 	use({ "EdenEast/nightfox.nvim", tag = "v1.0.0" })
   use { 'dracula/vim', as = 'dracula' }
+
+  -- Appearance 
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use {
     'akinsho/bufferline.nvim',
@@ -71,6 +74,15 @@ require('packer').startup(function(use)
           end,
         }
       }
+    end
+  }
+  use { -- fancy configurable notification 'popup'
+    'rcarriga/nvim-notify',
+    config = function()
+      vim.notify = require('notify')
+      vim.notify.setup({
+        stages = 'slide',
+      })
     end
   }
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
@@ -86,7 +98,7 @@ require('packer').startup(function(use)
         -- ...
         rainbow = {
           enable = true,
-          -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+          -- disable = { "jsx", "cpp" }, -- list of languages you want to disable the plugin for
           extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
           max_file_lines = nil, -- Do not enable for files with more than n lines, int
           -- colors = {}, -- table of hex strings
@@ -220,7 +232,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme onedark]]
+-- vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
 vim.o.clipboard='unnamedplus'
@@ -247,6 +259,12 @@ vim.keymap.set('n', '<C-s>', ':w<CR>', { silent = true })
 vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>', { silent = true })
 
 vim.keymap.set('i', 'jk', '<Esc>', { silent = true })
+
+-- Better block moving in Visual mode
+vim.keymap.set('v', '>', '>gv', { silent = true })
+vim.keymap.set('v', '<', '<gv', { silent = true })
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { silent = true })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { silent = true })
 
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -311,6 +329,7 @@ require('telescope').setup {
 
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
+pcall(require('telescope').load_extension, 'notify')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -332,8 +351,10 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 vim.keymap.set('n', '<leader>hw', '<CMD>HopWord<CR>')
 vim.keymap.set('n', '<leader>hl', '<CMD>HopLineStart<CR>')
 vim.keymap.set('n', '<leader>hc', '<CMD>HopWordCurrentLine<CR>')
+vim.keymap.set('n', '<leader>hf', '<CMD>HopChar2CurrentLine<CR>')
 vim.keymap.set('n', '<leader>hmw', '<CMD>HopWordMW<CR>')
 vim.keymap.set('n', '<leader>hh', '<CMD>HopPatternMW<CR>')
+vim.keymap.set('n', '<leader>ha', '<CMD>HopAnywhere<CR>')
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -460,7 +481,7 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   tsserver = {},
-  -- eslint = {},
+  eslint = {},
 
   sumneko_lua = {
     Lua = {
@@ -497,12 +518,27 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
+-- this is for diagnositcs signs on the line number column
+-- use this to beautify the plain E W signs to more fun ones
+-- !important nerdfonts needs to be setup for this to work in your terminal
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl= hl, numhl = hl })
+end
+
 -- Turn on lsp status information
 require('fidget').setup()
 
 -- nvim-cmp setup
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
+
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
 
 cmp.setup {
   snippet = {
