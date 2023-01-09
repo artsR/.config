@@ -1,3 +1,5 @@
+require('artur.colorschemes')
+
 -- Ensure packer installation
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
@@ -612,6 +614,4 @@ cmp.setup {
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
-
-require('artur.colorschemes')
 
