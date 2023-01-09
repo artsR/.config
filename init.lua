@@ -11,6 +11,11 @@ require('packer').startup(function(use)
   -- Package manager
   use 'wbthomason/packer.nvim'
 
+  -- TODO: add use 'voldikss/vim-floaterm'
+  -- TODO: consider adding use 'danilamihailov/beacon.nvim' -- visualize cursor jump
+  -- TODO: add use mbbill/undotree -- make it easy to browse and switch between different undo branches
+  -- TODO: consider adding use preservim/tagbar or simrat39/symbols-outline.nvim -- browse tags, file structure
+  -- TODO: add LazyGit
 
   use {
     'simrat39/symbols-outline.nvim',
