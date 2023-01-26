@@ -3,6 +3,7 @@
 - 'mbbill/undotree'
   - '<leader>u', ':UndotreeToggle<CR>'
 - 'kylechui/nvim-surround'
+- 'simrat39/symbols-outline.nvim'
 - 'phaazon/Hop.nvim'
 - LSP configuration
   ```lua
