@@ -6,7 +6,7 @@ M.mappings = require "custom.mappings"
 -- make sure to maintain the structure of `core\default_config.lua` here
 
 M.ui = {
-  theme = "aquarium",
+  theme = "ayu-dark",
 }
 
 
