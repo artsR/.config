@@ -47,6 +47,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 --   --   'Pocco81/true-zen.nvim',
 --   --   config = function()
 --   --     require('true-zen').setup {}
+--   --     require('TrueZen').setup {}
 --   --   end
 --   -- }
 --
